@@ -74,6 +74,22 @@ public class LL {
 
     }
 
+    public void deleteByValue(int k){
+        Node temp = head , prev = null;
+        int c =0;
+        while(temp != null){
+            c++;
+            if(temp.value == k && c <= 1){
+                deleteFirst();
+            }
+            else if(temp.value == k){
+                prev.next = prev.next.next;
+            }
+            prev = temp;
+            temp = temp.next;
+        }
+    }
+
     public void deleteAtPosition(int index){
         if(head == null){
             System.out.println("Linked list is empty");
@@ -83,6 +99,18 @@ public class LL {
                 temp = temp.next;
             }
             temp.next = temp.next.next;
+        }
+    }
+
+    public void deleteLastElement(){
+        if(head == null){
+            System.out.println("Linked list is empty");
+        }else{
+            Node temp = head;
+            while(temp.next.next != null){
+                temp = temp.next;
+            }
+            temp.next = null;
         }
     }
 
