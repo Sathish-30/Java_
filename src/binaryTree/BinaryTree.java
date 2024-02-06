@@ -65,4 +65,31 @@ public class BinaryTree {
         inorder(root.right);
     }
 
+    public boolean find(Node root , int key){
+        if(root == null) return false;
+        if(root.val == key) return true;
+        if(find(root.left , key)) return true;
+        if(find(root.right , key)) return true;
+        return false;
+    }
+
+    public int sum(Node root){
+        if(root == null) return 0;
+        return root.val + sum(root.left) + sum(root.right);
+    }
+
+    public int findMin(Node root){
+        if(root == null) return Integer.MAX_VALUE;
+        return Math.min(root.val , Math.min(findMin(root.left) , findMin(root.right)));
+    }
+
+    public int findMax(Node root){
+        if(root == null) return Integer.MIN_VALUE;
+        return Math.max(root.val , Math.max(findMax(root.left) , findMax(root.right)));
+    }
+
+    public int maxSum(Node root){
+        if(root == null) return 0;
+        return root.val + Math.max(maxSum(root.left) , maxSum(root.right));
+    }
 }
