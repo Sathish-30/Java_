@@ -1,15 +1,20 @@
 package binaryTree;
 
-import binaryTree.BinaryTree;
+
 public class Implementation {
     public static void main(String[] args) {
         BinaryTree bt = new BinaryTree();
         Node root = bt.getRoot();
-        bt.insert(root, 11);
-        bt.insert(root, 25);
-        bt.insert(root, 15);
-        bt.insert(root, 13);
-        bt.insert(root, 20);
+        root = bt.insert(root , 10);
+        root = bt.insert(root , 12);
+        root = bt.insert(root , 14);
+        root = bt.insert(root , 24);
+        root = bt.insert(root , 35);
+        root = bt.insert(root , 50);
         bt.levelOrder(root);
+        System.out.println();
+        System.out.print("InOrder traversal of binary tree : ");
+        bt.inorder(root);
+        System.out.print("null");
     }
 }
