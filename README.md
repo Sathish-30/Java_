@@ -7,3 +7,5 @@
 - Stack
 
 - Queue
+
+- Binary Search tree
