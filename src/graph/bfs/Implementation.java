@@ -1,4 +1,4 @@
-package graph;
+package graph.bfs;
 
 public class Implementation {
     public static void main(String[] args) {
@@ -9,6 +9,6 @@ public class Implementation {
         graph.insertEdge(1 , 4);
         graph.insertEdge(2 , 5);
         graph.insertEdge(2 , 6);
-        graph.DFS(0);
+        graph.BFS(0);
     }
 }

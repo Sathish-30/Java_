@@ -1,6 +1,7 @@
-package graph;
+package graph.bfs;
 
 import java.util.LinkedList;
+import java.util.Queue;
 
 public class Graph {
     private int V;
@@ -12,12 +13,11 @@ public class Graph {
             arr[i] = new LinkedList<>();
         }
     }
-
     public void insertEdge(int sourceVertex , int destinationVertex){
         arr[sourceVertex].add(destinationVertex);
     }
 
-    public void DFS(int start){
+    public void BFS(int start){
         System.out.print("Traversal : ");
         boolean[] vis = new boolean[V];
         bfsHelper(start , vis);
@@ -26,10 +26,16 @@ public class Graph {
 
     private void bfsHelper(int start, boolean[] vis) {
         vis[start] = true;
-        System.out.print(start+"->");
-        for(int e : arr[start]){
-            if(!vis[e]){
-                bfsHelper(e , vis);
+        Queue<Integer> queue = new LinkedList<>();
+        queue.add(start);
+        while(!queue.isEmpty()){
+            int vertex = queue.poll();
+            System.out.print(vertex+" -> ");
+            for(int e : arr[vertex]){
+                if(!vis[e]) {
+                    vis[e] = true;
+                    queue.add(e);
+                }
             }
         }
     }
