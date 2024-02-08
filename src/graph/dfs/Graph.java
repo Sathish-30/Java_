@@ -1,6 +1,7 @@
 package graph.dfs;
 
 import java.util.LinkedList;
+import java.util.List;
 
 public class Graph {
     private int V;
@@ -34,4 +35,13 @@ public class Graph {
         }
     }
 
+    public boolean findPath(int source , int des , List<Integer> al){
+        al.add(source);
+        if(source == des) return true;
+        for(int neighbour : arr[source]){
+            if(findPath(neighbour , des , al)) return true;
+        }
+        al.removeLast();
+        return false;
+    }
 }
