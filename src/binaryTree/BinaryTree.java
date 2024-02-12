@@ -1,9 +1,6 @@
 package binaryTree;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 public class BinaryTree {
     private final Node root;
@@ -95,10 +92,10 @@ public class BinaryTree {
         return root.val + Math.max(maxSum(root.left) , maxSum(root.right));
     }
 
-    public void leftMostView(Node root){
+    public ArrayList<Integer> leftMostView(Node root){
         ArrayList<Integer> res = new ArrayList<>();
         helperForLeft(root , res , 0);
-        System.out.println(res);
+        return res;
     }
     void helperForLeft(Node root , ArrayList<Integer> res , int level){
         if(root == null) return;
@@ -109,10 +106,10 @@ public class BinaryTree {
         helperForLeft(root.right , res , level + 1);
     }
 
-    public void rightMostView(Node root){
+    public ArrayList<Integer> rightMostView(Node root){
         ArrayList<Integer> res = new ArrayList<>();
         helperForRight(root , res , 0);
-        System.out.println(res);
+        return res;
     }
 
     private void helperForRight(Node root, ArrayList<Integer> res, int level) {
@@ -122,6 +119,20 @@ public class BinaryTree {
         }
         helperForRight(root.right , res , level + 1);
         helperForRight(root.left , res , level + 1);
+    }
+
+    public LinkedHashSet<Integer> getLeafNodes(Node root){
+        LinkedHashSet<Integer> res = new LinkedHashSet<>();
+        getLeafHelper(root , res);
+        return res;
+    }
+
+    private void getLeafHelper(Node root, LinkedHashSet<Integer> res) {
+        if(root == null) return;
+        if(root.left == null && root.right == null) res.add(root.val);
+        getLeafHelper(root.left , res);
+        getLeafHelper(root.right , res);
+
     }
 
     public Node lca(Node root , int a , int b){

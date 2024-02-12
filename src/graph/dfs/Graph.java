@@ -44,4 +44,14 @@ public class Graph {
         al.removeLast();
         return false;
     }
+
+    public boolean checkCycle(boolean[] vis , int node){
+        for(int neighbour : arr[node]){
+            if(!vis[neighbour]){
+                vis[neighbour] = true;
+                if(checkCycle(vis , neighbour)) return true;
+            }else return true;
+        }
+        return false;
+    }
 }

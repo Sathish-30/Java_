@@ -7,17 +7,21 @@ import java.util.List;
 
 public class Implementation {
     public static void main(String[] args) {
-        Graph graph = new Graph(8);
-        graph.insertEdge(1 , 4);
+        Graph graph = new Graph(6);
+        graph.insertEdge(0 , 1);
         graph.insertEdge(1 , 2);
-        graph.insertEdge(4 , 7);
-        graph.insertEdge(2 , 3);
-        graph.DFS(1);
+        graph.insertEdge(2 , 5);
+        graph.insertEdge(5 , 3);
+        graph.DFS(0);
         System.out.println();
-        List<Integer> al = new ArrayList<>();
-        if(graph.findPath(1 , 3 , al)){
-            System.out.println("There exists a Path");
-            System.out.println(al);
+        boolean[] vis = new boolean[6];
+        vis[0] = true;
+        if(graph.checkCycle(vis , 0)){
+            System.out.println("Cycle detected");
+        }else{
+            System.out.println("No Cycle detected");
         }
+        System.out.println();
+
     }
 }
